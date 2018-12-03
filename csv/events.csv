@@ -1,0 +1,4 @@
+id,title,if_decision,money,money_trickle,closeness,trickle,force,message
+E001,An ape just bit another human!,false,0,0,A001_5,,,""
+E002,Concerns grow over apparent zombie-like laziness,false,0,0,,A002_0.1,,""
+E002,People rally to try to get more money for Google Headquarters!,true,-10000000,1000,,,,"Will you spend the money to donate to the Google cause?"
