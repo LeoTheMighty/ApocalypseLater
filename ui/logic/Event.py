@@ -30,24 +30,34 @@ class Event:
     def __init__(self, event_id, event_dict):
         self.id = None
         self.title = None
-        self.if_decision = None
+        self.type = None
         self.message = None
         self.closeness = None
         self.trickle = None
         self.force = None
         self.money = None
         self.money_trickle = None
+        self.decline_money = None
+        self.decline_closeness = None
+        self.decline_trickle = None
+        self.decline_force = None
+        self.decline_money_trickle = None
 
-        if {"title", "if_decision", "message", "closeness", "trickle", "force", "money", "money_trickle"} <= set(event_dict):
+        if {"title", "type", "message", "closeness", "trickle", "force", "money", "money_trickle", "decline_money", "decline_money_trickle", "decline_closeness", "decline_trickle", "decline_force"} <= set(event_dict):
             self.id = event_id
             self.title = event_dict["title"]
-            self.if_decision = event_dict["if_decision"] in ["True", "true"]
+            self.type = event_dict["type"] if event_dict["type"] in ["alert", "decision", "news"] else print("ERROR EVENT TYPE VALUE INCORRECT")
             self.message = event_dict["message"]
             self.money = float(event_dict["money"]) if event_dict["money"] != "" else 0
             self.money_trickle = float(event_dict["money_trickle"]) if event_dict["money_trickle"] != "" else 0
             self.closeness = parse_inline_csv(event_dict["closeness"], True)
             self.trickle = parse_inline_csv(event_dict["trickle"], True)
             self.force = parse_inline_csv(event_dict["force"], True)
+            self.decline_money = float(event_dict["decline_money"]) if event_dict["decline_money"] != "" else 0
+            self.decline_money_trickle = float(event_dict["decline_money_trickle"]) if event_dict["decline_money_trickle"] != "" else 0
+            self.decline_closeness = parse_inline_csv(event_dict["decline_closeness"], True)
+            self.decline_trickle = parse_inline_csv(event_dict["decline_trickle"], True)
+            self.decline_force = parse_inline_csv(event_dict["decline_force"], True)
         else:
             print("Improperly formed event dict")
 

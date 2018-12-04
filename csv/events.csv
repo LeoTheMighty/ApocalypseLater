@@ -1,4 +1,6 @@
-id,title,if_decision,money,money_trickle,closeness,trickle,force,message
-E001,An ape just bit another human!,false,0,0,A001_5,,,""
-E002,Concerns grow over apparent zombie-like laziness,false,0,0,,A002_0.1,,""
-E002,People rally to try to get more money for Google Headquarters!,true,-10000000,1000,,,,"Will you spend the money to donate to the Google cause?"
+id,title,type,money,money_trickle,closeness,trickle,force,decline_money,decline_money_trickle,decline_closeness,decline_trickle,decline_force,message
+E001,A vicious ape bites human! On purpose...?,news,0,0,A001_5,,,,,,,,
+E002,Concerns grow over apparent laziness…,news,0,0,,A002_0.1,,,,,,,
+E003,People rally to try to for Google funding!,decision,-10000000,5000,,,,,,,A004_5,,Will you spend the money to donate to the Google cause? (Google seems eager to start their next big AI project...)
+E004,The president has been caught on oxycotin... Many follow in his footsteps,news,0,0,A007_5,A007_0.5,,,,,,,
+E005,California Wildfires occur!,alert,,10000,,,A006_-25,,,,,,Environmental Forces take a big hit; but people are sympathetic; and start donating to our cause.

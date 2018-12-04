@@ -140,12 +140,15 @@ class GameScreen(Screen):
         if not self.news_prompt.is_showing_event():
             event = self.game_handler.get_next_event()
             if event is not None:
-                if event.if_decision:
+                if event.type == "decision":
                     self.game_handler.set_deciding_event(event)
                     return self.get_next_screen_values("event_decision")
-                else:
+                elif event.type == "news":
                     self.news_prompt.show_event(event)
                     self.game_handler.handle_event(event)
+                elif event.type == "alert":
+                    self.game_handler.alert_title_message = (event.title, event.message)
+                    return self.get_next_screen_values("alert")
 
         # Handle the refreshing
         if self.game_handler.if_should_refresh():

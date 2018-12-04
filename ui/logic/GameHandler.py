@@ -42,7 +42,7 @@ class GameHandler:
 
         # The event feed that has occurred (limited at 5)
         self.events_to_show = []
-        self.events = []
+        # self.events = []
 
         if save_file_name is None:
             # Init it from scratch
@@ -129,15 +129,25 @@ class GameHandler:
                 closest_apocalypse_force_percent = apocalypse.force
         return closest_apocalypse_name, closest_apocalypse_percent, closest_apocalypse_force_percent
 
-    def handle_event(self, event):
-        self.money += event.money
-        self.money_trickle += event.money_trickle
-        for apocalypse_id, value in event.closeness.items():
-            self.apocalypse_handler.apocalypses_dict[apocalypse_id].closeness += value
-        for apocalypse_id, value in event.trickle.items():
-            self.apocalypse_handler.apocalypses_dict[apocalypse_id].trickle += value
-        for apocalypse_id, value in event.force.items():
-            self.apocalypse_handler.apocalypses_dict[apocalypse_id].force += value
+    def handle_event(self, event, if_accept=True):
+        if if_accept:
+            self.money += event.money
+            self.money_trickle += event.money_trickle
+            for apocalypse_id, value in event.closeness.items():
+                self.apocalypse_handler.apocalypses_dict[apocalypse_id].closeness += value
+            for apocalypse_id, value in event.trickle.items():
+                self.apocalypse_handler.apocalypses_dict[apocalypse_id].trickle += value
+            for apocalypse_id, value in event.force.items():
+                self.apocalypse_handler.apocalypses_dict[apocalypse_id].force += value
+        else:
+            self.money += event.decline_money
+            self.money_trickle += event.decline_money_trickle
+            for apocalypse_id, value in event.decline_closeness.items():
+                self.apocalypse_handler.apocalypses_dict[apocalypse_id].closeness += value
+            for apocalypse_id, value in event.decline_trickle.items():
+                self.apocalypse_handler.apocalypses_dict[apocalypse_id].trickle += value
+            for apocalypse_id, value in event.decline_force.items():
+                self.apocalypse_handler.apocalypses_dict[apocalypse_id].force += value
 
     def handle_place_funnel(self, place):
         self.money -= place.cost
