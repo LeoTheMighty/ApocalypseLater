@@ -167,6 +167,8 @@ class GameScreen(Screen):
         self.apocalypse_label.change_label(self.game_handler.shown_apocalypse_name)
         self.closeness_progress_bar.set_percent(self.game_handler.shown_closeness_percent)
         self.force_progress_bar.set_percent(self.game_handler.shown_force_percent)
+        for place in self.game_handler.place_handler.places:
+            self.change_button_percent(place.id, place.percent_indicated)
 
     def add_place_buttons(self):
         self.place_button_group = pygame.sprite.Group()
@@ -196,13 +198,13 @@ class GameScreen(Screen):
     def change_button_percent(self, identifier, percent):
         place_button_tuple = self.place_buttons[identifier]
         name = place_button_tuple[0]
-        color = color_3_gradient(self.gradient[0], self.gradient[1], self.gradient[2], percent)
+        color = color_3_gradient(self.gradient[0], self.gradient[1], self.gradient[2], min(100, percent))
         place_button = place_button_tuple[3]
         place_button_circle = place_button_tuple[4]
         # new_color = int((color[0] + delta_hsv[0]) % 180), \
         #             int((color[1] + delta_hsv[1]) % 256), \
         #             int((color[2] + delta_hsv[2]) % 256)
-        place_button_circle.change_color()
+        place_button_circle.change_color(color)
         self.place_buttons[identifier] = (name, color, percent, place_button, place_button_circle)
 
     def add_button_percent(self, identifier, delta_percent):

@@ -1,4 +1,4 @@
-from .CSVHandler import parse_csv_file, parse_inline_csv
+from .CSVHandler import parse_csv_file, parse_inline_csv, parse_inline_csv_list, get_random_value_from_range
 import os
 
 
@@ -25,7 +25,11 @@ class Place:
         self.closeness = None
         self.trickle = None
         self.force = None
-        if {"name", "x_location", "y_location", "description", "cost", "money_trickle", "closeness", "trickle", "force"} <= set(place_dict):
+        self.apocalypse_indicators = None
+
+        self.percent_indicated = 0
+
+        if {"name", "x_location", "y_location", "description", "cost", "money_trickle", "closeness", "trickle", "force", "apocalypse_indicators"} <= set(place_dict):
             self.id = place_id
             self.name = place_dict["name"]
             self.x_location = float(place_dict["x_location"])
@@ -36,5 +40,6 @@ class Place:
             self.closeness = parse_inline_csv(place_dict["closeness"], True)
             self.trickle = parse_inline_csv(place_dict["trickle"], True)
             self.force = parse_inline_csv(place_dict["force"], True)
+            self.apocalypse_indicators = parse_inline_csv_list(place_dict["apocalypse_indicators"])
         else:
             print("Improperly formed place dict = " + str(place_dict))

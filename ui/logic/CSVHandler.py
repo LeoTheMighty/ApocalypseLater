@@ -1,6 +1,6 @@
 import sys
 import os
-import re
+from random import uniform
 
 
 def parse_csv_file(file_path):
@@ -20,10 +20,17 @@ def parse_csv_file(file_path):
                 if if_first:
                     if_first = False
                     item_id = value
+                    if item_id == "E011":
+                        print("ay")
                     file_dict[item_id] = {}
                 else:
                     if item_id:
-                        file_dict[item_id][names[i]] = value.replace(";", ",")
+                        if len(names) <= i and value == "":
+                            # This is probably a dumb error
+                            continue
+                            # print(value, i, len(names))
+                        else:
+                            file_dict[item_id][names[i]] = value.replace(";", ",")
                     else:
                         print("DID NOT SET THE ITEM ID")
                         sys.exit(-2)
@@ -42,6 +49,22 @@ def parse_inline_csv(string, if_values_float=False):
             else:
                 inline_csv_dict[values[0]] = values[1]
     return inline_csv_dict
+
+
+def parse_inline_csv_list(string):
+    return [x.strip() for x in string.split(",") if x != ""]
+
+
+def get_random_value_from_range(string):
+    values = string.split('-')
+    if len(values) == 0 or values[0] == "":
+        return 0
+    if len(values) == 1:
+        return float(values[0])
+    elif len(values) == 2:
+        return uniform(float(values[0]), float(values[1]))
+    else:
+        print("INCORRECTLY FORMATTED!!")
 
 
 if __name__ == "__main__":

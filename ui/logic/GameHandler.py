@@ -100,6 +100,12 @@ class GameHandler:
                 else:
                     self.lose_message = apocalypse.lose_message
             # TODO Check to see if the apocalypses have overflowed!
+        for place in self.place_handler.places:
+            max_apocalypse_percent = 0
+            for apocalypse_id in place.apocalypse_indicators:
+                percent = self.apocalypse_handler.apocalypses_dict[apocalypse_id].closeness
+                max_apocalypse_percent = max(percent, max_apocalypse_percent)
+            place.percent_indicated = max_apocalypse_percent
         self.shown_apocalypse_name, self.shown_closeness_percent, self.shown_force_percent = self.get_closeness_force_percent()
         event = self.event_handler.get_random_event()
         if event is not None:

@@ -1,6 +1,19 @@
 id,title,type,money,money_trickle,closeness,trickle,force,decline_money,decline_money_trickle,decline_closeness,decline_trickle,decline_force,message
 E001,A vicious ape bites human! On purpose...?,news,0,0,A001_5,,,,,,,,
-E002,Concerns grow over apparent laziness…,news,0,0,,A002_0.1,,,,,,,
+E002,Concerns grow over apparent laziness... ,news,0,0,,A002_0.1,,,,,,,
 E003,People rally to try to for Google funding!,decision,-10000000,5000,,,,,,,A004_5,,Will you spend the money to donate to the Google cause? (Google seems eager to start their next big AI project...)
 E004,The president has been caught on oxycotin... Many follow in his footsteps,news,0,0,A007_5,A007_0.5,,,,,,,
-E005,California Wildfires occur!,alert,,10000,,,A006_-25,,,,,,Environmental Forces take a big hit; but people are sympathetic; and start donating to our cause.
+E005,California Wildfires occur!,alert,0,10000,,,A006_-25,,,,,,Environmental Forces take a big hit; but people are sympathetic; and start donating to our cause.
+E006,Sneezing becomes so popular that it becomes a national holiday!,news,0,0,A003_3,A003_0.1,,,,,,,
+E007,Radio stations stop working for a minute. Is there an interference from space?,news,0,0,A005_10,,,,,,,,
+E008,BP oil spill in the pacific ocean!,alert,0,0,,A006_0.3,A006_-5,,,,,,The decline of the environment increases and our environmental forces are expended to help clean up.
+E009,Little Sophia becomes the second robot citizen in the world,news,0,0,A004_10,,,,,,,,
+E010,"Ape says ""mama"" as their first words!",news,0,0,A001_5,,,,,,,,
+E011,Leaders push law that gives apes rights to life; liberty; and the pursuit of happiness,news,0,0,,A001_0.2,,,,,,,
+E012,Sun growing brighter everyday. Apparently sundials have stopped working... ,news,0,0,A006_5,,,,,,,,
+E013,"Local gravedigger ""Gary"" went missing last night... ",news,0,0,A002_10,,,,,,,,
+E014,"New teenager trend: ""fanging"" where they bite each other incessantly",news,0,0,A001_2;A002_3;A003_3,A002_0.5,,,,,,,
+E015,"Somebody stole homeless man ""Henry""'s tin foil hat",news,0,0,A005_3,,,,,,,,
+E016,Northeastern University ranked best school in the nation by researchers at Northeastern University,news,0,1000,,,,,,,,,
+E017,Boston University ranked worst school in the nation by researchers from Northeastern University,news,0,1000,,,,,,,,,
+E018,The husky becomes the globally recognized best animal,news,0,1000,,,,,,,,,
